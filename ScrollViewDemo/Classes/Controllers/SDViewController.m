@@ -10,9 +10,7 @@
 #import "SDScrollingCell.h"
 
 @interface SDViewController ()
-<UIScrollViewDelegate,
-UICollectionViewDataSource,
-UICollectionViewDelegate,
+<UICollectionViewDataSource,
 SDScrollingCellDelegate>
 
 @end
@@ -22,46 +20,36 @@ SDScrollingCellDelegate>
 
 #pragma mark - Overridden Methods
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-
-}
-
-- (void)viewDidAppear:(BOOL)animated
+- (void)viewDidAppear: (BOOL)animated
 {
     [super viewDidAppear: animated];
     
-    self.outerScrollView.contentSize = CGSizeMake(640, 0.f);
+    self.outerScrollView.contentSize = CGSizeMake(
+        640.f,
+        0.f);
     self.outerScrollView.frame = self.view.frame;
 }
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-
-#pragma mark - UIScrollViewDelegate Methods
-
 
 
 #pragma mark - UICollectionViewDataSource
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+- (NSInteger)collectionView: (UICollectionView *)collectionView
+    numberOfItemsInSection: (NSInteger)section
 {
     return 10;
 }
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+- (UICollectionViewCell *)collectionView: (UICollectionView *)collectionView cellForItemAtIndexPath: (NSIndexPath *)indexPath
 {
-    SDScrollingCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier: @"scrollingCell" forIndexPath: indexPath];
+    SDScrollingCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier: SDScrollingCellIdentifier
+        forIndexPath: indexPath];
     
     cell.delegate = self;
     
-    cell.color = [UIColor colorWithRed: arc4random() % 11 * 0.1 green: arc4random() % 11 * 0.1 blue: arc4random() % 11 * 0.1 alpha: 1.f];
+    cell.color = [UIColor colorWithRed: arc4random() % 11 * 0.1
+        green: arc4random() % 11 * 0.1
+        blue: arc4random() % 11 * 0.1
+        alpha: 1.f];
     return cell;
 }
 
@@ -76,7 +64,9 @@ SDScrollingCellDelegate>
 - (void)scrollingCell: (SDScrollingCell *)cell
     didChangePullOffset: (CGFloat)offset
 {
-    [_outerScrollView setContentOffset: CGPointMake(offset, 0.f)];
+    [_outerScrollView setContentOffset: CGPointMake(
+        offset,
+        0.f)];
 }
 
 - (void)scrollingCellDidEndPulling: (SDScrollingCell *)cell

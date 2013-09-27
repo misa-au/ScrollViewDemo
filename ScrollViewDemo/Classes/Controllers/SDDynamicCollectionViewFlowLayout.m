@@ -27,12 +27,18 @@
         // note: if there's a lot of items,
         // might want to use tile instead of loading all into memory at once
         // create UICollectionViewLayoutAttributes
-        NSArray *items = [super layoutAttributesForElementsInRect: CGRectMake(0.f, 0.f, contentSize.width, contentSize.height)];
+        NSArray *items = [super layoutAttributesForElementsInRect: CGRectMake(
+            0.f,
+            0.f,
+            contentSize.width,
+            contentSize.height)];
         
         // create UIDynamicAnimator and UIAttachmentBehaviors
         for (UICollectionViewLayoutAttributes *item in items)
         {
-            UIAttachmentBehavior *spring = [[UIAttachmentBehavior alloc] initWithItem: item attachedToAnchor: [item center]];
+            UIAttachmentBehavior *spring = [[UIAttachmentBehavior alloc]
+                initWithItem: item
+                attachedToAnchor: [item center]];
             
             spring.length = 0.f;
             spring.damping = 0.5f;
@@ -58,7 +64,7 @@
 // because the bounds of the scrollview changes everytime the content offset changes
 // grab the scrollview to find out how much just scrolled
 // and go through all the springs and stretch them by the amount that we just scrolled
-- (BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds
+- (BOOL)shouldInvalidateLayoutForBoundsChange: (CGRect)newBounds
 {
     UIScrollView *scrollview = self.collectionView;
     CGFloat scrollDelta = newBounds.origin.y - scrollview.bounds.origin.y;

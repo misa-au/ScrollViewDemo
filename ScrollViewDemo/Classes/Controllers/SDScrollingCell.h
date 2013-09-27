@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+static NSString * const SDScrollingCellIdentifier = @"SDScrollingCellIdentifier";
+
 @protocol SDScrollingCellDelegate;
 
 @interface SDScrollingCell : UICollectionViewCell

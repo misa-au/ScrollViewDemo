@@ -44,7 +44,8 @@
         _colorView = [[UIView alloc]
             init];
         
-        _scrollView = [[UIScrollView alloc] init];
+        _scrollView = [[UIScrollView alloc]
+            init];
         _scrollView.delegate = self;
         _scrollView.pagingEnabled = YES;
         _scrollView.showsHorizontalScrollIndicator = NO;
@@ -82,7 +83,9 @@
     if (_pulling == YES)
     {
         // determine delta beyond catch point
-        CGFloat pullOffset = MAX(0, offset - PULL_THRESHOLD);
+        CGFloat pullOffset = MAX(
+            0,
+            offset - PULL_THRESHOLD);
         
         // adjust parent content offset by delta
         if (_decceleratingBackToZero == YES)
@@ -98,7 +101,9 @@
 
         
         // translate child by delta
-        _scrollView.transform = CGAffineTransformMakeTranslation(pullOffset, 0.f);
+        _scrollView.transform = CGAffineTransformMakeTranslation(
+            pullOffset,
+            0.f);
     }
 }
 
@@ -120,7 +125,8 @@
 {
     CGFloat offset = _scrollView.contentOffset.x;
     
-    if (targetContentOffset->x == 0 && offset > 0)
+    if (targetContentOffset->x == 0
+        && offset > 0)
     {
         _decceleratingBackToZero = YES;
         
@@ -139,10 +145,17 @@
     CGRect bounds = contentView.bounds;
     
     CGFloat pageWidth = bounds.size.width + PULL_THRESHOLD;
-    _scrollView.frame = CGRectMake(0.f, 0.f, pageWidth, bounds.size.height);
-    _scrollView.contentSize = CGSizeMake(pageWidth * 2, bounds.size.height);
+    _scrollView.frame = CGRectMake(
+        0.f,
+        0.f,
+        pageWidth,
+        bounds.size.height);
+    _scrollView.contentSize = CGSizeMake(
+        pageWidth * 2,
+        bounds.size.height);
     
-    _colorView.frame = [_scrollView convertRect: bounds fromView: contentView];
+    _colorView.frame = [_scrollView convertRect: bounds
+        fromView: contentView];
 }
 
 
