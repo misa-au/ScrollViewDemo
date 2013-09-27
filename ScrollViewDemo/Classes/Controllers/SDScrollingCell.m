@@ -37,24 +37,6 @@
 
 #pragma mark - Constructor
 
-- (id)initWithFrame:(CGRect)frame
-{
-    if (self = [super initWithFrame:frame])
-    {
-        _colorView = [[UIView alloc]
-            init];
-        
-        _scrollView = [[UIScrollView alloc] init];
-        _scrollView.delegate = self;
-        _scrollView.pagingEnabled = YES;
-        _scrollView.showsHorizontalScrollIndicator = NO;
-        
-        [self.contentView addSubview: _scrollView];
-        [_scrollView addSubview: _colorView];
-    }
-    return self;
-}
-
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     if (self = [super initWithCoder: aDecoder])
