@@ -16,12 +16,6 @@
 #pragma mark - Class Interface
 
 @interface SDScrollingCell () <UIScrollViewDelegate>
-@end
-
-
-#pragma mark - Class Implementation
-
-@implementation SDScrollingCell
 {
     @private __strong UIScrollView *_scrollView;
     @private __strong UIView *_colorView;
@@ -32,6 +26,13 @@
     @private BOOL _decceleratingBackToZero;
     CGFloat _decelerationDistanceRatio;
 }
+
+@end
+
+
+#pragma mark - Class Implementation
+
+@implementation SDScrollingCell
 
 
 #pragma mark - Constructor
